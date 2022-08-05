@@ -1,0 +1,19 @@
+.new-file{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+}
+.new-file-title{
+    font-size: 5em;
+    padding-bottom: 15px;
+}
+.form-file{
+    width: 80%;
+}
+
+.boton-modal{
+    display: none;
+}
