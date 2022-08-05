@@ -207,7 +207,7 @@ export default function Index() {
       }
     }
   }
-
+console.log({nombre:primerNombre,segundo:segundoNombre,dir:direccion})
   return (
     <div className='new-file'>
       <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#exampleModal" />
@@ -216,19 +216,19 @@ export default function Index() {
         <h1 className='h1 text-center'>Nueva Afiliacion</h1>
         <div className="col-md-3">
           <label for="primerNombre" className="form-label">Primer Nombre</label>
-          <input autoComplete='off' onChange={(e) => setPrimerNombre(((e.target.value).toUpperCase().trim()).toUpperCase().trim())} value={primerNombre} type="text" className="form-control" id="primerNombre" placeholder="e.j Manuel" />
+          <input autoComplete='off' onChange={(e) => setPrimerNombre(((e.target.value).toUpperCase()).trim())}   type="text" className="form-control" id="primerNombre" placeholder="e.j Manuel" />
         </div>
         <div className="col-md-3">
           <label for="segundoNombre" className="form-label">Segundo Nombre</label>
-          <input autoComplete='off' onChange={(e) => setSegundoNombre((e.target.value).toUpperCase().trim())} value={segundoNombre} type="text" className="form-control" id="segundoNombre" placeholder="e.j Antonio" />
+          <input autoComplete='off' onChange={(e) => setSegundoNombre((e.target.value).toUpperCase())}  type="text" className="form-control" id="segundoNombre" placeholder="e.j Antonio" />
         </div>
         <div className="col-md-3">
           <label for="primerApellido" className="form-label">Primer Apellido</label>
-          <input autoComplete='off' onChange={(e) => setPrimerApellido((e.target.value).toUpperCase().trim())} value={primerApellido} type="text" className="form-control" id="primerApellido" placeholder="e.j Gomez" />
+          <input autoComplete='off' onChange={(e) => setPrimerApellido((e.target.value).toUpperCase())}  type="text" className="form-control" id="primerApellido" placeholder="e.j Gomez" />
         </div>
         <div className="col-md-3">
           <label for="segundoApellido" className="form-label">Segundo Apellido</label>
-          <input autoComplete='off' onChange={(e) => setSegundoApellido((e.target.value).toUpperCase().trim())} value={segundoApellido} type="text" className="form-control" id="segundoApellido" placeholder="e.j Sanchez" />
+          <input autoComplete='off' onChange={(e) => setSegundoApellido((e.target.value).toUpperCase())}  type="text" className="form-control" id="segundoApellido" placeholder="e.j Sanchez" />
         </div>
         <div className="col-md-2">
           <label for="tipoDeDoc" className="form-label">Tipo Documento</label>
@@ -246,23 +246,23 @@ export default function Index() {
         </div>
         <div className="col-md-3">
           <label for="documento" className="form-label">Numero Documento</label>
-          <input autoComplete='off' onChange={(e) => setDocumento((e.target.value).toUpperCase().trim())} value={documento} type="text" className="form-control" id="documento" placeholder="e.j 1.025.978.254" />
+          <input autoComplete='off' onChange={(e) => setDocumento((e.target.value).toUpperCase())} value={documento} type="text" className="form-control" id="documento" placeholder="e.j 1.025.978.254" />
         </div>
         <div className="col-md-4">
           <label for="direccion" className="form-label">Direccion</label>
-          <input autoComplete='off' onChange={(e) => setDireccion((e.target.value).toUpperCase())} value={direccion} type="text" className="form-control" id="direccion" placeholder="e.j cl 1 # 2 - 3" />
+          <input autoComplete='off' onChange={(e) => setDireccion((e.target.value).toUpperCase())} type="text" className="form-control" id="direccion" placeholder="e.j cl 1 # 2 - 3" />
         </div>
         <div className="col-md-3">
           <label for="ciudad" className="form-label">Ciudad</label>
-          <input autoComplete='off' onChange={(e) => setciudad((e.target.value).toUpperCase().trim())} value={ciudad} type="text" className="form-control" id="ciudad" placeholder="e.j ubate" />
+          <input autoComplete='off' onChange={(e) => setciudad((e.target.value).toUpperCase())} value={ciudad} type="text" className="form-control" id="ciudad" placeholder="e.j ubate" />
         </div>
         <div className="col-md-2">
           <label for="dpto" className="form-label">Departamento</label>
-          <input autoComplete='off' onChange={(e) => setDpto((e.target.value).toUpperCase().trim())} defaultValue='C/MARCA' type="text" className="form-control" id="dpto" placeholder="e.j boyaca" />
+          <input autoComplete='off' onChange={(e) => setDpto((e.target.value).toUpperCase())} defaultValue='C/MARCA' type="text" className="form-control" id="dpto" placeholder="e.j boyaca" />
         </div>
         <div className="col-md-3">
           <label for="celular" className="form-label">Celular</label>
-          <input autoComplete='off' onChange={(e) => setCelular((e.target.value).toUpperCase().trim())} value={celular} type="text" className="form-control" id="celular" placeholder="e.j 3147895248" />
+          <input autoComplete='off' onChange={(e) => setCelular((e.target.value).toUpperCase())} value={celular} type="text" className="form-control" id="celular" placeholder="e.j 3147895248" />
         </div>
         <div className="col-md-4">
           <label for="direccionOf" className="form-label">Direccion Oficina</label>
@@ -284,7 +284,7 @@ export default function Index() {
         </div>
         <div className="col-md-3">
           <label for="dptoOf" className="form-label">Departamento Oficina</label>
-          <input autoComplete='off' onChange={(e) => setDptoOf((e.target.value).toUpperCase().trim())} defaultValue='C/MARCA' type="text" className="form-control" id="dptoOf" placeholder="e.j santander" />
+          <input autoComplete='off' onChange={(e) => setDptoOf((e.target.value).toUpperCase())} defaultValue='C/MARCA' type="text" className="form-control" id="dptoOf" placeholder="e.j santander" />
         </div>
         <div className="col-md-3">
           <label for="numeroOf" className="form-label">Numero Oficina</label>
@@ -297,11 +297,11 @@ export default function Index() {
         </div>
         <div className="col-md-3">
           <label for="cargoEmpleado" className="form-label">Cargo Empleado</label>
-          <input autoComplete='off' onChange={(e) => setCargo((e.target.value).toUpperCase().trim())} defaultValue='A Y P' type="text" className="form-control" id="cargoEmpleado" placeholder="e.j aux op" />
+          <input autoComplete='off' onChange={(e) => setCargo((e.target.value).toUpperCase())} defaultValue='A Y P' type="text" className="form-control" id="cargoEmpleado" placeholder="e.j aux op" />
         </div>
         <div className="col-md-3">
           <label for="salario" className="form-label">Salario</label>
-          <input autoComplete='off' onChange={(e) => setSalario((e.target.value).toUpperCase().trim())} defaultValue='1.000.000' type="text" className="form-control" id="salario" placeholder="e.j 1.100.000" />
+          <input autoComplete='off' onChange={(e) => setSalario((e.target.value))} defaultValue='1.000.000' type="text" className="form-control" id="salario" placeholder="e.j 1.100.000" />
         </div>
         <div className="col-md-2">
           <label for="fechaDeIngreso" className="form-label">Fecha De Ingreso</label>
@@ -309,7 +309,7 @@ export default function Index() {
         </div>
         <div className="col-md-2">
           <label for="queFinca" className="form-label">Finca</label>
-          <input autoComplete='off' onChange={(e) => setQueFinca((e.target.value).toUpperCase().trim())} type="text" className="form-control" id="queFinca" placeholder="e.j BQT2" />
+          <input autoComplete='off' onChange={(e) => setQueFinca((e.target.value).toUpperCase())} type="text" className="form-control" id="queFinca" placeholder="e.j BQT2" />
         </div>
         <div className="col-md-3">
           <label for="correoE" className="form-label">Email Finca</label>
