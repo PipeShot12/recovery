@@ -113,6 +113,7 @@ async function generatePdf(obj, index, arrayLength) {
         case 'CC':
             checkbox1.addToPage(firstPage,({x: width - 513, y: height - 143, height:15, width: 15,borderWidth:undefined,backgroundColor:undefined,borderColor:undefined,}))
             checkbox1.check()
+            checkbox1.enableReadOnly()
             break;
         case 'CE':
             checkbox1.addToPage(firstPage,({x: width - 488, y: height - 143, height:15, width: 15,borderWidth:undefined,backgroundColor:undefined,borderColor:undefined,}))
@@ -182,7 +183,23 @@ async function generatePdf(obj, index, arrayLength) {
     nit.setText(nitFinca)
     nit.updateAppearances(ArialMtBold)
 
-    form.flatten();
+    nombreCompleto.enableReadOnly()
+    nuemroDocumento.enableReadOnly()
+    dir.enableReadOnly()
+    ci.enableReadOnly()
+    dto.enableReadOnly()
+    numero.enableReadOnly()
+    dirOf.enableReadOnly()
+    ciOf.enableReadOnly()
+    dtoOf.enableReadOnly()
+    telefonoOf.enableReadOnly()
+    cargoEmpleado.enableReadOnly()
+    salarioEmpleado.enableReadOnly()
+    year.enableReadOnly()
+    mes.enableReadOnly()
+    dia.enableReadOnly()
+    razon.enableReadOnly()
+    nit.enableReadOnly()
 
 
     const pdfBytes = await pdfDoc.save()
