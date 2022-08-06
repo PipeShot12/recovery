@@ -106,6 +106,7 @@ async function generatePdf(obj, index, arrayLength) {
     const mes = form.getTextField('MES')
     const dia = form.getTextField('DIA')
     const razon = form.getTextField('RAZON EMPRESA')
+    const nit = form.getTextField('NIT EMPRESA')
     const correo = form.getTextField('CORREO')
     const tipoAf = form.getTextField('PENSION')
     const inicial = form.getTextField('TIPO')
