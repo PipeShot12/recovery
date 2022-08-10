@@ -3,7 +3,8 @@ import { saveAs } from 'file-saver';
 
 const Excel = require('exceljs');
 async function getAllLogsToExcel(array){
-  const workbook = new Excel.Workbook();
+  if(array?.length > 0){
+    const workbook = new Excel.Workbook();
   const worksheet = workbook.addWorksheet("HOJA 1");
   worksheet.insertRow(1,{id:"pepe"})
 const title = 'AFILIACIONES PROTECCION  MES DIA -------- #1CANTIDAD'
@@ -65,8 +66,10 @@ array.forEach(element => {
 });
 const bla = await workbook.xlsx.writeBuffer()
 saveAs(new Blob([bla]),'AFILIACIONES PROTECCION.xlsx')
+  }
 };
 async function getFilterLogsToExcel(array){
+ if(array.length){
   const workbook = new Excel.Workbook();
   const worksheet = workbook.addWorksheet("HOJA 1");
   worksheet.insertRow(1,{id:"pepe"})
@@ -128,6 +131,7 @@ array.forEach(element => {
 });
 const bla = await workbook.xlsx.writeBuffer()
 saveAs(new Blob([bla]),'AFILIACIONES PROTECCION.xlsx')
+ }
 };
 
 export {getAllLogsToExcel,getFilterLogsToExcel}
