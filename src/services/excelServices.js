@@ -64,7 +64,7 @@ array.forEach(element => {
                     });
 });
 const bla = await workbook.xlsx.writeBuffer()
-saveAs(new Blob([bla]),'data.xlsx')
+saveAs(new Blob([bla]),'AFILIACIONES PROTECCION.xlsx')
 };
 async function getFilterLogsToExcel(array){
   const workbook = new Excel.Workbook();
@@ -127,7 +127,7 @@ array.forEach(element => {
                     });
 });
 const bla = await workbook.xlsx.writeBuffer()
-saveAs(new Blob([bla]),'data.xlsx')
+saveAs(new Blob([bla]),'AFILIACIONES PROTECCION.xlsx')
 };
 
 export {getAllLogsToExcel,getFilterLogsToExcel}
