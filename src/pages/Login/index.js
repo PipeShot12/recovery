@@ -60,7 +60,7 @@ export default function Index() {
         <div className='login-box'>
             <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
             <Modal  setModalInfo={setModalInfo} modalIformativo={modalIfo} titleModal={titleMsg} bodyModal={loginMsg} />
-            <form classNameName='form-login'>
+            <form className='form-login'>
                 <h1 className='h1 text-center'>Iniciar Sesion</h1>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Correo Electronico</label>
