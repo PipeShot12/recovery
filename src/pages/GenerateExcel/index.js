@@ -45,6 +45,7 @@ export default function Index() {
   const filterSearch = async (props,token) => {
 
     const {id,date} = props
+    setFiltrar(false)
     if (token || id || date) {
       setDisabledButtonGetFilter(true)
       setLoadingGetFilter(true)
