@@ -132,5 +132,4 @@ async function getFilterLogsToExcel(array) {
     saveAs(new Blob([bla]), 'AFILIACIONES PROTECCION.xlsx')
   }
 };
-getFilterLogsToExcel([{id:1,documento:1020813080,nombre:'ANDRES HERNANDEZ',empresa:'ALIADOS LABORALES',nit:"9050545",salario:1000000,direccion:'cl  1 2',telefono:'3151296516',correo_empresa:'andreszzgtr@gmail',finca:'BQT2',fecha_ing:'2022-04-17T-00Z'}])
 export { getAllLogsToExcel, getFilterLogsToExcel }
