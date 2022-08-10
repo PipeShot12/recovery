@@ -5,7 +5,7 @@ export default function Index({ eleminarValor,ingresarValor, cerrarModal, nuevoV
     const [valorModificado, setValorModificado] = useState('')
     return (
         <>
-            <div  class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div  className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -13,7 +13,7 @@ export default function Index({ eleminarValor,ingresarValor, cerrarModal, nuevoV
                             <button  onClick={()=> cerrarModal()} type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" id="closeModal"></button>
                         </div>
                         {modalIformativo  && 
-                        (<div class="modal-body">
+                        (<div className="modal-body">
                             <p className=""  dangerouslySetInnerHTML={{__html: bodyModal}}></p>
                         </div>)}
                         

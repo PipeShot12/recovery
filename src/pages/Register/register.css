@@ -8,9 +8,8 @@
   
 }
 
-.form-register{
-    width: 80%;
+@media (min-width: 768px){ 
+    .form-register{
+        width: 30%;
+    }
 }
-/* .boton-modal{
-    display: none;
-} */

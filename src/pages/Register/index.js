@@ -76,7 +76,7 @@ export default function Index() {
         <div className='register-box'>
             <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
             <Modal handlerAdvertencia={handlerAdvertencia} advertencia={mostrarAdvertencia} setModalInfo={setModalInfo} modalIformativo={modalIfo} titleModal={titleMsg} bodyModal={registerMsg} />
-            <form>
+            <form className='form-register'>
                 <h1 className='h1 text-center'>Registrarse</h1>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Correo Electronico</label>

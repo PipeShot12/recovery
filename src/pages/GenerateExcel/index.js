@@ -105,7 +105,6 @@ export default function Index() {
           <div className="mb-3">
             <label htmlFor="filtrarPorId" className="form-label">Por Id</label>
             <input onChange={(e) => handlerInputs(e)} value={porId} placeholder='ej. 12' type="number" className="form-control" id="filtrarPorId" aria-describedby="idHelp" />
-
           </div>
           <div className="mb-3">
             <label for="filtrarPorFecha" className="form-label">Fecha De Ingreso</label>
