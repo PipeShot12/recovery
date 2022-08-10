@@ -5,21 +5,20 @@ const Excel = require('exceljs');
 async function getAllLogsToExcel(array) {
   if (array?.length > 0) {
     const workbook = new Excel.Workbook();
-    const worksheet = workbook.addWorksheet("HOJA 1");
-    worksheet.insertRow(1, { id: "pepe" })
-    const title = 'AFILIACIONES PROTECCION  MES DIA -------- #1CANTIDAD'
-    worksheet.getCell('A1').value = title;
+    const worksheet = workbook.addWorksheet("Hoja 1");
+    const title = `AFILIACIONES PROTECCION  MES DIA -------- #${array?.length}`
+    worksheet.getCell('B1').value = title;
     // worksheet.getCell(`A1`).alignment = { horizontal: 'center' }
-    worksheet.getCell('A1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
-    worksheet.mergeCells('A1:H1');
+    worksheet.getCell('B1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
+    worksheet.mergeCells('B1:H1');
     worksheet.addRow().values = ['ID', 'CEDULA', 'NOMBRE', 'EMPRESA', 'NIT', 'SALARIO', 'DIRECCION', 'TELEFONO', 'CORREO EMPRESA', 'FINCA', 'FECHA ING']
     worksheet.columns = [
       { key: 'id', width: 8, style: { alignment: { horizontal: 'left' } } },
-      { key: 'documento', width: 20 },
+      { key: 'documento', width: 20, style: { alignment: { horizontal: 'left' } } },
       { key: 'nombre', width: 32 },
       { key: 'empresa', width: 25 },
       { key: 'nit', width: 15 },
-      { key: 'salario', width: 15 },
+      { key: 'salario', width: 15, style: { alignment: { horizontal: 'left' } } },
       { key: 'direccion', width: 32 },
       { key: 'telefono', width: 12 },
       { key: 'correo_empresa', width: 43 },
@@ -72,20 +71,19 @@ async function getAllLogsToExcel(array) {
 async function getFilterLogsToExcel(array) {
   if (array?.length > 0) {
     const workbook = new Excel.Workbook();
-    const worksheet = workbook.addWorksheet("HOJA 1");
-    worksheet.insertRow(1, { id: "pepe" })
-    const title = 'AFILIACIONES PROTECCION  MES DIA -------- #1CANTIDAD'
+    const worksheet = workbook.addWorksheet("Hoja 1");
+    const title = `AFILIACIONES PROTECCION  MES DIA -------- #${array?.length}`
     worksheet.getCell('A1').value = title;
     // worksheet.getCell(`A1`).alignment = { horizontal: 'center' }
     worksheet.getCell('A1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
     worksheet.mergeCells('A1:H1');
     worksheet.addRow().values = ['CEDULA', 'NOMBRE', 'EMPRESA', 'NIT', 'SALARIO', 'DIRECCION', 'TELEFONO', 'CORREO EMPRESA', 'FINCA', 'FECHA ING']
     worksheet.columns = [
-      { key: 'documento', width: 20 },
+      { key: 'documento', width: 20,style:{ alignment: { horizontal: 'left' } }  },
       { key: 'nombre', width: 32 },
       { key: 'empresa', width: 25 },
       { key: 'nit', width: 15 },
-      { key: 'salario', width: 15 },
+      { key: 'salario', width: 15,style:{ alignment: { horizontal: 'left' } } },
       { key: 'direccion', width: 32 },
       { key: 'telefono', width: 12 },
       { key: 'correo_empresa', width: 43 },
@@ -134,5 +132,5 @@ async function getFilterLogsToExcel(array) {
     saveAs(new Blob([bla]), 'AFILIACIONES PROTECCION.xlsx')
   }
 };
-
+getFilterLogsToExcel([{id:1,documento:1020813080,nombre:'ANDRES HERNANDEZ',empresa:'ALIADOS LABORALES',nit:"9050545",salario:1000000,direccion:'cl  1 2',telefono:'3151296516',correo_empresa:'andreszzgtr@gmail',finca:'BQT2',fecha_ing:'2022-04-17T-00Z'}])
 export { getAllLogsToExcel, getFilterLogsToExcel }
