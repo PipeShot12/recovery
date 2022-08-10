@@ -20,10 +20,12 @@ export default function Index() {
   const [filtrar, setFiltrar] = useState(false)
   const [porId, setPorId] = useState('');
   const [porFecha, setPorFecha] = useState('')
+  const [rango,setRango] = useState({desde:'',hasta:''})
   useEffect(() => {
     if(filtrar === false) {
       setPorFecha('')
       setPorId('')
+      setRango({desde:'',hasta:''})
     }
   }, [filtrar])
   
@@ -32,21 +34,32 @@ export default function Index() {
     const valor = e.target.value
     const id = e.target.id
     if (id === 'filtrarPorId') {
-
       setPorId(valor)
+      setRango({desde:'',hasta:''})
       setPorFecha('')
     }
     if (id === 'filtrarPorFecha') {
       setPorId('')
+      setRango({desde:'',hasta:''})
       setPorFecha(valor)
+    }
+    if(id === 'rangoInf'){
+      setPorId('')
+      setPorFecha('')
+      setRango(prev=>({...prev,desde:valor}))
+    }
+    if(id === 'rangoSup'){
+      setPorId('')
+      setPorFecha('')
+      setRango(prev => ({...prev,hasta:valor}))
     }
   }
 
   const filterSearch = async (props,token) => {
 
-    const {id,date} = props
+    const {id,date, range} = props
     setFiltrar(false)
-    if (token || id || date) {
+    if ((token && id) || (token && date)  || ((token && range) && (range?.hasta > range?.desde))) {
       setDisabledButtonGetFilter(true)
       setLoadingGetFilter(true)
       const req = await filterData(props,token)
@@ -108,11 +121,16 @@ export default function Index() {
             <input onChange={(e) => handlerInputs(e)} value={porId} placeholder='ej. 12' type="number" className="form-control" id="filtrarPorId" aria-describedby="idHelp" />
           </div>
           <div className="mb-3">
+            <label  className="form-label">Por Rango</label>
+            <input onChange={(e) => handlerInputs(e)} value={rango?.desde} placeholder='ej. 1' type="number" className="form-control mb-3" id="rangoInf" aria-describedby="rangoHelp" />
+            <input onChange={(e) => handlerInputs(e)} value={rango?.hasta} placeholder='ej. 10' type="number" className="form-control" id="rangoSup" aria-describedby="rangoHelp" />
+          </div>
+          <div className="mb-3">
             <label for="filtrarPorFecha" className="form-label">Fecha De Ingreso</label>
             <input  onChange={(e) => handlerInputs(e)} value={porFecha} type="date" className="form-control" id="filtrarPorFecha" />
           </div>
           <div className='d-flex justify-content-center d-md-12'>
-          <button disabled={disabledButtonGetFilter} onClick={(e) => filterSearch({id:porId,date:porFecha},token) } className="btn btn-primary mb-2 ">
+          <button disabled={disabledButtonGetFilter} onClick={(e) => filterSearch({id:porId,date:porFecha,range:rango},token) } className="btn btn-primary mb-2 ">
             {<Spinner loading={loadingGetFilter} title={'Aceptar'} />}
           </button>
           </div>

@@ -1,6 +1,6 @@
 const logs = process.env.REACT_APP_URL_LOGS
 const logsFilter = process.env.REACT_APP_URL_LOGSFILTER
-
+  
 const getAllLogs = async (token) => {
   const req = await window.fetch(logs, {
     method: 'GET',
