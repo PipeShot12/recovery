@@ -1,15 +1,24 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import {UserProvider} from './context/userContext'
+import useLocalStorage from './hooks/useLocalStorage'
 import './App.css';
-import Welcome from './components/Welcome'
-import File from './components/File'
+import AppRoutes from './routes';
+import LandingPage from './pages/LandingPage';
 function App() {
-  const [newFiles,setNewFiles] = useState(false);
-
+  const { localStorageToken } = useLocalStorage('loginToken')
+  const getToken = localStorageToken
   return (
-    <div className="App">
-      {newFiles ? <File/> : <Welcome createFiles={setNewFiles}/>}
-    </div>
-  );
+    <Router>
+      <UserProvider>
+        <Switch>
+          <Route exact path='/' render={() => getToken?.token ? <Redirect to='/app' /> : <LandingPage/>} />
+          <Route path='*'>
+            <AppRoutes />
+          </Route>
+        </Switch>
+        </UserProvider>
+    </Router>
+  )
 }
 
 export default App;
