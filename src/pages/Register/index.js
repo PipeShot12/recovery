@@ -76,7 +76,7 @@ export default function Index() {
         <div className='register-box'>
             <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
             <Modal handlerAdvertencia={handlerAdvertencia} advertencia={mostrarAdvertencia} setModalInfo={setModalInfo} modalIformativo={modalIfo} titleModal={titleMsg} bodyModal={registerMsg} />
-            <form >
+            <form>
                 <h1 className='h1 text-center'>Registrarse</h1>
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Correo Electronico</label>
@@ -100,7 +100,9 @@ export default function Index() {
                 </div> */}
                 <div className='text-center'>
                     <button disabled={disableButton} onClick={(e) => onSubmit(e, { name, email, password, confirmation })} className="btn btn-primary mb-2 col-md-12"> {<Spinner loading={loading} title={'Registrarse'} />}</button>
-                    <Link to='/sign-in'>Ya tengo una cuenta!</Link>
+                    <div className='col-md-12'>
+                        <Link to='/sign-in'>Ya tengo una cuenta!</Link>
+                    </div>
                 </div>
             </form>
         </div>

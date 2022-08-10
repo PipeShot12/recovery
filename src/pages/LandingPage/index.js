@@ -8,7 +8,7 @@ export default function LandingPage() {
         <div className='landing-box'>
             <div className=''>
                 <h1 className='h1 text-primary text-center'>Recovery Afiliaciones</h1>
-                <img src={LandingImage} atl='todo list app' />
+                <img src={LandingImage} atl='recovery app'  className='img-fluid'/>
             </div>
             <div className='w-100 text-center'>
                 <Link to='/sign-in' >

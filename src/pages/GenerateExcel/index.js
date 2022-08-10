@@ -101,20 +101,22 @@ export default function Index() {
       <button disabled={disabledButtonGetAll} onClick={(e) => generateAllLogs(e)} className='btn btn-success h1'> {<Spinner loading={loadingGetAll} title={'Generar excel con todos los registros'} />}</button>
       <button onClick={() => setFiltrar(prev => !prev)} className='btn btn-success h1'>Generar excel filtrado</button>
       {filtrar &&
-        <div className='row'>
-          <div className="mb-12 mb-3">
+        <form className='form-generate'>
+          <div className="mb-3">
             <label htmlFor="filtrarPorId" className="form-label">Por Id</label>
             <input onChange={(e) => handlerInputs(e)} value={porId} placeholder='ej. 12' type="number" className="form-control" id="filtrarPorId" aria-describedby="idHelp" />
 
           </div>
-          <div className="col-md-12 mb-3">
+          <div className="mb-3">
             <label for="filtrarPorFecha" className="form-label">Fecha De Ingreso</label>
             <input  onChange={(e) => handlerInputs(e)} value={porFecha} type="date" className="form-control" id="filtrarPorFecha" />
           </div>
-          <button disabled={disabledButtonGetFilter} onClick={(e) => filterSearch({id:porId,date:porFecha},token) } className="btn btn-primary mb-2 col-md-12">
+          <div className='d-flex justify-content-center d-md-12'>
+          <button disabled={disabledButtonGetFilter} onClick={(e) => filterSearch({id:porId,date:porFecha},token) } className="btn btn-primary mb-2 ">
             {<Spinner loading={loadingGetFilter} title={'Aceptar'} />}
           </button>
-        </div>}
+          </div>
+        </form>}
     </div>
   )
 }

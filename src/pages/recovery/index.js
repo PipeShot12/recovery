@@ -529,7 +529,7 @@ export default function Index() {
     <div className='new-file'>
       <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
       <Modal ingresarValor={otroValor}  eleminarValor={eleminarAfiliacion} cerrarModal={handlerCerrarModal} advertencia={mostrarAdvertencia} handlerAdvertencia={handlerAdvertencia} editarRegistro={editarRegistroEspecifico} modalEdit={modalEdit} array={arregloDeArchivos} setModalInfo={setModalInformativo} modalIformativo={modalIformarmativo} titleModal={titleModal} bodyModal={bodyModal} nuevoValor={cambiarValorSelecionadores} />
-      <form className="row g-3 needs-validation form-file" novalidate>
+      <form className="row g-3 form-file">
           <h1 className='h1 text-center'>{objEditar ?`Editando afiliacion de ${objEditar.primerNombre} ${objEditar.primerApellido}`: 'Nueva Afiliacion'}</h1>
           {arregloDeArchivos.length > 0 ? 
           (
@@ -569,9 +569,9 @@ export default function Index() {
         </div>):
         <div className='d-md-flex justify-content-between'>
        
-          <button onClick={(e) => agregarDatosArray(e)} class="btn btn-success" type="submit">Crear Afiliacion</button>
-          <button disabled={arregloDeArchivos.length < 1} onClick={(e) => nuevoPaquete(e)} class="btn btn-danger" >Nuevo Paquete</button>
-          <button disabled={arregloDeArchivos.length < 1 || desactivarBoton ? true : false} onClick={(e) => procesarArray(e, arregloDeArchivos)} class="btn btn-secondary" >Afiliaciones por procesar: {arregloDeArchivos.length}</button>
+          <button onClick={(e) => agregarDatosArray(e)} class="btn btn-success btn-m" type="submit">Crear Afiliacion</button>
+          <button disabled={arregloDeArchivos.length < 1} onClick={(e) => nuevoPaquete(e)} class="btn btn-danger btn-m" >Nuevo Paquete</button>
+          <button disabled={arregloDeArchivos.length < 1 || desactivarBoton ? true : false} onClick={(e) => procesarArray(e, arregloDeArchivos)} class="btn btn-secondary btn-m btn-last" >Afiliaciones por procesar: {arregloDeArchivos.length}</button>
       </div>}
       </form>
 

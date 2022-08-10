@@ -79,7 +79,9 @@ export default function Index() {
                     <button disabled={disableButton} onClick={(e)=>onSubmit(e,{userData,password})} className="btn btn-primary mb-2 col-md-12">
                             {<Spinner loading={loading} title={'Ingresar'}/>}
                         </button>
-                    <Link to='/sign-up'>Crear una nuevo cuenta!</Link>
+                      <div className='col-md-12'>
+                        <Link to='/sign-up'>Crear una nuevo cuenta!</Link>
+                      </div>
                 </div>
             </form>
         </div>

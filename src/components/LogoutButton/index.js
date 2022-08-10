@@ -16,6 +16,6 @@ export default function Index() {
         }
       }
   return (
-    <Button handlerClick={handleLogout}>Cerrar Sesion</Button>
+    <Button looks={'btn-secondary'} handlerClick={handleLogout}>Cerrar Sesion</Button>
   )
 }
