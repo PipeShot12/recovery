@@ -49,11 +49,10 @@ export default function Index() {
   const [aceptarAdvertencia,setAceptarAdvertencia] = useState(false)
   const [otroValor,setOtroValor] = useState(false)
   const agregarDatosArray = (e) => {
-    const REXP= /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
     e.preventDefault()
     if (primerNombre && primerApellido && tipoDocu && documento && direccion &&
         ciudad && dpto && celular && direccionOf && ciudad && dptoOf &&
-        numeroOf && salario && fechaDeIngreso && queFinca &&nitFinca && razonFinca && emailFinca && REXP.test(fechaDeIngreso)) {
+        numeroOf && salario && fechaDeIngreso && queFinca &&nitFinca && razonFinca && emailFinca ) {
       
       setArregloDeArchivos(prev => [...prev, {
         id: uuidv4(),
