@@ -275,11 +275,13 @@ async function generatePdf(obj, index, arrayLength) {
 
     const pdfBytes = await pdfDoc.save()
     zip.file(`AFILIACION ${primerNombre} ${primerApellido}.pdf`, pdfBytes)
-    if (index === (arrayLength - 1)) {
+ 
+   if (index === (arrayLength - 1)) {
         await zip.generateAsync({ type: "blob" }).then(function (content) {
             saveAs(content, "AFILIACIONES.zip");
             });
     }
+    
 }
 
 

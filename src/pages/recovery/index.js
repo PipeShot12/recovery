@@ -107,11 +107,13 @@ export default function Index() {
   }
   const procesarArray = async (e, array) => {
     e.preventDefault()
-      setDesactivarBoton(true)
-      array.forEach((item, index) => {
-        generatePdf(item, index, array.length)
-        setDesactivarBoton(false)
-      })
+     
+ 
+    array.forEach((item,index)=>{
+      generatePdf(item, index, array.length)
+    })
+  
+      
   
       array.reverse().forEach((item) => {
         createDoc(item)
@@ -385,17 +387,35 @@ export default function Index() {
       setTitleModal('Nuevo Paquete!!')
       setBodyModal('Se ha iniciado un nuevo paquete!!')
       botonModal.current.click()
-      setPrimerNombre('')
-      setSegundoNombre('')
-      setPrimerApellido('')
-      setSegundoApellido('')
+     
       setDocumento('')
+      document.getElementById('documento').value = ''
+    
+      setPrimerNombre('')
+      document.getElementById('primerNombre').value = ''
+      
+      setSegundoNombre('')
+      document.getElementById('segundoNombre').value = ''
+  
+      setPrimerApellido('')
+      document.getElementById('primerApellido').value = ''
+  
+      setSegundoApellido('')
+      document.getElementById('segundoApellido').value = ''
+  
       setDireccion('')
+      document.getElementById('direccion').value = ''
+  
       setCelular('')
-      setCiudad('')
-      setEmailFinca('')
-      queFinca('')
+      document.getElementById('celular').value = ''
+  
+      setQueFinca('')
+      document.getElementById('queFinca').value = ''
+  
       setFechaDeIngreso('')
+      document.getElementById('fechaDeIngreso').value = ''
+      setEmailFinca('')
+      document.getElementById('emailFinca').value = ''
     }
   }
   const cambiarValorSelecionadores = (valor) => {
@@ -531,28 +551,28 @@ export default function Index() {
       <Modal ingresarValor={otroValor}  eleminarValor={eleminarAfiliacion} cerrarModal={handlerCerrarModal} advertencia={mostrarAdvertencia} handlerAdvertencia={handlerAdvertencia} editarRegistro={editarRegistroEspecifico} modalEdit={modalEdit} array={arregloDeArchivos} setModalInfo={setModalInformativo} modalIformativo={modalIformarmativo} titleModal={titleModal} bodyModal={bodyModal} nuevoValor={cambiarValorSelecionadores} />
       <form className="row g-3 form-file">
           <h1 className='h1 text-center'>{objEditar ?`Editando afiliacion de ${objEditar.primerNombre} ${objEditar.primerApellido}`: 'Nueva Afiliacion'}</h1>
-          {arregloDeArchivos.length > 0 ? 
+          {/* {arregloDeArchivos.length > 0 ? 
           (
           <div className="col-md-12 d-md-flex justify-content-end">
             <button disabled={modalEdit} onClick={(e)=> editarAfiliacion(e)} class="btn btn-primary" >Editar Afiliacion</button>
           </div>): ''  
-        }
+        } */}
         <TextField onChangeAction={setPrimerNombre} size={'col-md-3'} label={'primerNombre'} title={'Primer Nombre'} placeholder={'ej. Carlos'}/>
         <TextField onChangeAction={setSegundoNombre} size={'col-md-3'} label={'segundoNombre'} title={'Segundo Nombre'} placeholder={'ej. Antonio'}/>
         <TextField onChangeAction={setPrimerApellido} size={'col-md-3'} label={'primerApellido'} title={'Primer Apellido'} placeholder={'ej. Gomez'}/>
         <TextField onChangeAction={setSegundoApellido} size={'col-md-3'} label={'segundoApellido'} title={'Segundo Apellido'} placeholder={'ej. Sanchez'}/>
         <Select array={arrayTipoDato} size={'col-md-2'} label={'tipoDeDoc'} title={'Tipo Documento'} onChangeAction={selecionadores} newOptionId={'tipoDeDoc1'} defaultV={'CC'} keySub={'tipoDato'}/>
-        <TextField onChangeAction={setDocumento} size={'col-md-3'} label={'documento'} title={'Numero Documento'} placeholder={'e.j 1025978254'} type={'number'}/>
+        <TextField onChangeAction={setDocumento} size={'col-md-3'} label={'documento'} title={'Numero Documento'} placeholder={'e.j 1025978254'}/>
         <TextField onChangeAction={setDireccion} size={'col-md-4'} label={'direccion'} title={'Direccion'} placeholder={'e.j cl 1 # 2 - 3'}/>
         <TextField onChangeAction={setCiudad} size={'col-md-3'} label={'ciudad'} title={'Ciudad'} placeholder={'ej. Ubate'}/>
         <TextField onChangeAction={setDpto} defaultV={'C/MARCA'} size={'col-md-2'} label={'dpto'} title={'Departamento'} placeholder={'ej. Boyaca'}/>
-        <TextField onChangeAction={setCelular} size={'col-md-3'} value={celular} label={'celular'} title={'Celular'} placeholder={'ej. 3223078950'} type={'number'}/>
+        <TextField onChangeAction={setCelular} size={'col-md-3'} value={celular} label={'celular'} title={'Celular'} placeholder={'ej. 3223078950'}/>
         <Select array={arrayDirOf} size={'col-md-4'} label={'direccionOf'} title={'Direccion Oficina'} onChangeAction={selecionadores} newOptionId={'direccionOf1'} defaultV={'KRA 21 # 87 - 22'} keySub={'dirOf'}/>
         <Select array={arrayCiudadOf} size={'col-md-3'} label={'ciudadOf'} title={'Direccion Oficina'} onChangeAction={selecionadores} newOptionId={'ciudadOf1'} defaultV={'BOGOTA'} keySub={'ciOf'}/>
         <TextField onChangeAction={setDptoOf} defaultV={'C/MARCA'} size={'col-md-3'} label={'dptoOf'} title={'Departamento Oficina'} placeholder={'ej. Nte Santander'}/>
-        <Select array={arrayTelOf} size={'col-md-3'} label={'numeroOf'} title={'Numero Oficina'} onChangeAction={selecionadores} newOptionId={'numeroOf1'} defaultV={'7498332'} keySub={'ciOf'} type={'number'}/>
+        <Select array={arrayTelOf} size={'col-md-3'} label={'numeroOf'} title={'Numero Oficina'} onChangeAction={selecionadores} newOptionId={'numeroOf1'} defaultV={'7498332'} keySub={'ciOf'}/>
         <TextField onChangeAction={setCargo} defaultV={'A Y P'} size={'col-md-3'} label={'cargoEmpleado'} title={'Cargo Empleado'} placeholder={'e.j Aux Op'}/>
-        <TextField onChangeAction={setSalario} defaultV={'1000000'} size={'col-md-3'} label={'salario'} title={'Salario'} placeholder={'e.j 1100000'} type={'number'}/>
+        <TextField onChangeAction={setSalario} defaultV={'1000000'} size={'col-md-3'} label={'salario'} title={'Salario'} placeholder={'e.j 1100000'}/>
         <div className="col-md-2">
           <label for="fechaDeIngreso" className="form-label">Fecha De Ingreso</label>
           <input onChange={(e) => setFechaDeIngreso(reverseDate((e.target.value).replace(/-/g, '/')))} type="date" className="form-control" id="fechaDeIngreso" />
@@ -570,7 +590,7 @@ export default function Index() {
         <div className='d-md-flex justify-content-between'>
        
           <button onClick={(e) => agregarDatosArray(e)} class="btn btn-success btn-m" type="submit">Crear Afiliacion</button>
-          <button disabled={arregloDeArchivos.length < 1} onClick={(e) => nuevoPaquete(e)} class="btn btn-danger btn-m" >Nuevo Paquete</button>
+          {/* <button disabled={arregloDeArchivos.length < 1} onClick={(e) => nuevoPaquete(e)} class="btn btn-danger btn-m" >Nuevo Paquete</button> */}
           <button disabled={arregloDeArchivos.length < 1 || desactivarBoton ? true : false} onClick={(e) => procesarArray(e, arregloDeArchivos)} class="btn btn-secondary btn-m btn-last" >Afiliaciones por procesar: {arregloDeArchivos.length}</button>
       </div>}
       </form>
