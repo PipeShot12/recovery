@@ -8,6 +8,7 @@ import JSZip from 'jszip';
 import {arrayEmail} from '../assets/arrayData'
 import { decimales } from '../helpers/helpers';
 const zip = new JSZip()
+const folder = zip.folder('AFILIACIONES')
 
 let pdfCreated = null
 async function createDoc(obj) {
@@ -49,7 +50,7 @@ async function createDoc(obj) {
     })
 
     const pdfBinary = await pdfCreated.save()
-     zip.file(`PLANTILLA POSTERIOR.pdf`, pdfBinary)
+    folder.file(`PLANTILLA POSTERIOR.pdf`, pdfBinary)
 
 }
 async function generatePdf(obj, index, arrayLength) {
@@ -274,12 +275,12 @@ async function generatePdf(obj, index, arrayLength) {
     
 
     const pdfBytes = await pdfDoc.save()
-    zip.file(`AFILIACION ${primerNombre} ${primerApellido}.pdf`, pdfBytes)
+    folder.file(`AFILIACION ${primerNombre} ${primerApellido}.pdf`, pdfBytes)
  
    if (index === (arrayLength - 1)) {
-        await zip.generateAsync({ type: "blob" }).then(function (content) {
+        await folder.generateAsync({ type: "blob" }).then(function (content) {
             saveAs(content, "AFILIACIONES.zip");
-            });
+            }).then(()=>zip.remove('AFILIACIONES'))
     }
     
 }

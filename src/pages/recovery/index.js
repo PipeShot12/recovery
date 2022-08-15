@@ -53,32 +53,59 @@ export default function Index() {
     if (primerNombre && primerApellido && tipoDocu && documento && direccion &&
         ciudad && dpto && celular && direccionOf && ciudad && dptoOf &&
         numeroOf && salario && fechaDeIngreso && queFinca &&nitFinca && razonFinca && emailFinca ) {
-      
-      setArregloDeArchivos(prev => [...prev, {
-        id: uuidv4(),
-        primerNombre,
-        segundoNombre,
-        primerApellido,
-        segundoApellido,
-        documento,
-        direccion,
-        dpto,
-        celular,
-        tipoDocu,
-        direccionOf,
-        dptoOf,
-        ciudadOf,
-        numeroOf,
-        nitFinca,
-        razonFinca,
-        cargo,
-        salario,
-        emailFinca,
-        fechaDeIngreso,
-        ciudad,
-        queFinca,
+          console.log({
+            id: uuidv4(),
+            primerNombre,
+            segundoNombre,
+            primerApellido,
+            segundoApellido,
+            documento,
+            direccion,
+            dpto,
+            celular,
+            tipoDocu,
+            direccionOf,
+            dptoOf,
+            ciudadOf,
+            numeroOf,
+            nitFinca,
+            razonFinca,
+            cargo,
+            salario,
+            emailFinca,
+            fechaDeIngreso,
+            ciudad,
+            queFinca,
+            
+          })
+      setArregloDeArchivos(prev => {
+        return [...prev,{
+          id: uuidv4(),
+          primerNombre,
+          segundoNombre,
+          primerApellido,
+          segundoApellido,
+          documento,
+          direccion,
+          dpto,
+          celular,
+          tipoDocu,
+          direccionOf,
+          dptoOf,
+          ciudadOf,
+          numeroOf,
+          nitFinca,
+          razonFinca,
+          cargo,
+          salario,
+          emailFinca,
+          fechaDeIngreso,
+          ciudad,
+          queFinca,
+          
+        }]
         
-      }])
+      })
       setTitleModal('Registrado!!')
       setBodyModal('La afiliacion se ha registrado existosamente!!')
       setModalInformativo(true)
@@ -107,13 +134,10 @@ export default function Index() {
   }
   const procesarArray = async (e, array) => {
     e.preventDefault()
-     
  
     array.forEach((item,index)=>{
       generatePdf(item, index, array.length)
     })
-  
-      
   
       array.reverse().forEach((item) => {
         createDoc(item)
@@ -416,6 +440,8 @@ export default function Index() {
       document.getElementById('fechaDeIngreso').value = ''
       setEmailFinca('')
       document.getElementById('emailFinca').value = ''
+      setCiudad('')
+      document.getElementById('ciudad').value = ''
     }
   }
   const cambiarValorSelecionadores = (valor) => {
@@ -545,24 +571,25 @@ export default function Index() {
       setOtroValor(false)
  
   }
+ 
   return (
     <div className='new-file'>
       <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
       <Modal ingresarValor={otroValor}  eleminarValor={eleminarAfiliacion} cerrarModal={handlerCerrarModal} advertencia={mostrarAdvertencia} handlerAdvertencia={handlerAdvertencia} editarRegistro={editarRegistroEspecifico} modalEdit={modalEdit} array={arregloDeArchivos} setModalInfo={setModalInformativo} modalIformativo={modalIformarmativo} titleModal={titleModal} bodyModal={bodyModal} nuevoValor={cambiarValorSelecionadores} />
       <form className="row g-3 form-file">
           <h1 className='h1 text-center'>{objEditar ?`Editando afiliacion de ${objEditar.primerNombre} ${objEditar.primerApellido}`: 'Nueva Afiliacion'}</h1>
-          {/* {arregloDeArchivos.length > 0 ? 
+          {arregloDeArchivos.length > 0 ? 
           (
           <div className="col-md-12 d-md-flex justify-content-end">
             <button disabled={modalEdit} onClick={(e)=> editarAfiliacion(e)} class="btn btn-primary" >Editar Afiliacion</button>
           </div>): ''  
-        } */}
+        }
         <TextField onChangeAction={setPrimerNombre} size={'col-md-3'} label={'primerNombre'} title={'Primer Nombre'} placeholder={'ej. Carlos'}/>
         <TextField onChangeAction={setSegundoNombre} size={'col-md-3'} label={'segundoNombre'} title={'Segundo Nombre'} placeholder={'ej. Antonio'}/>
         <TextField onChangeAction={setPrimerApellido} size={'col-md-3'} label={'primerApellido'} title={'Primer Apellido'} placeholder={'ej. Gomez'}/>
         <TextField onChangeAction={setSegundoApellido} size={'col-md-3'} label={'segundoApellido'} title={'Segundo Apellido'} placeholder={'ej. Sanchez'}/>
         <Select array={arrayTipoDato} size={'col-md-2'} label={'tipoDeDoc'} title={'Tipo Documento'} onChangeAction={selecionadores} newOptionId={'tipoDeDoc1'} defaultV={'CC'} keySub={'tipoDato'}/>
-        <TextField onChangeAction={setDocumento} size={'col-md-3'} label={'documento'} title={'Numero Documento'} placeholder={'e.j 1025978254'}/>
+        <TextField onChangeAction={setDocumento} type={'number'} size={'col-md-3'} label={'documento'} title={'Numero Documento'} placeholder={'e.j 1025978254'}/>
         <TextField onChangeAction={setDireccion} size={'col-md-4'} label={'direccion'} title={'Direccion'} placeholder={'e.j cl 1 # 2 - 3'}/>
         <TextField onChangeAction={setCiudad} size={'col-md-3'} label={'ciudad'} title={'Ciudad'} placeholder={'ej. Ubate'}/>
         <TextField onChangeAction={setDpto} defaultV={'C/MARCA'} size={'col-md-2'} label={'dpto'} title={'Departamento'} placeholder={'ej. Boyaca'}/>
@@ -590,7 +617,7 @@ export default function Index() {
         <div className='d-md-flex justify-content-between'>
        
           <button onClick={(e) => agregarDatosArray(e)} class="btn btn-success btn-m" type="submit">Crear Afiliacion</button>
-          {/* <button disabled={arregloDeArchivos.length < 1} onClick={(e) => nuevoPaquete(e)} class="btn btn-danger btn-m" >Nuevo Paquete</button> */}
+          <button disabled={arregloDeArchivos.length < 1} onClick={(e) => nuevoPaquete(e)} class="btn btn-danger btn-m" >Nuevo Paquete</button>
           <button disabled={arregloDeArchivos.length < 1 || desactivarBoton ? true : false} onClick={(e) => procesarArray(e, arregloDeArchivos)} class="btn btn-secondary btn-m btn-last" >Afiliaciones por procesar: {arregloDeArchivos.length}</button>
       </div>}
       </form>
