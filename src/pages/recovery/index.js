@@ -476,6 +476,7 @@ export default function Index() {
       setIdSeleccionadorActual('')
       document.getElementById('emailFinca1').innerHTML = valor.toLowerCase()
     }
+    setOtroValor(false);
   }
   const selecionadores = ({ id, value }) => {
     setModalEdit(false)
