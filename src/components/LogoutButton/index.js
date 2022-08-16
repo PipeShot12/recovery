@@ -16,6 +16,6 @@ export default function Index() {
         }
       }
   return (
-    <button className="btn-secondary" onClick={()=> handleLogout()}  >Cerrar Sesion</button>
+    <button className="btn btn-secondary" onClick={()=> handleLogout()}  >Cerrar Sesion</button>
   )
 }
