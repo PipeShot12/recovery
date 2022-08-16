@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function index({children,looks, handlerClick}) {
+export default function index({children,looks}) {
   return (
-    <button onClick={()=> handlerClick()} type="button" className={`btn btn-primary ${looks}`}>{children}</button>
+    <button  type="button" className={`btn btn-primary ${looks}`}>{children}</button>
   )
 }
