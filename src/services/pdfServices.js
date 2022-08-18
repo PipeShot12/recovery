@@ -280,7 +280,10 @@ async function generatePdf(obj, index, arrayLength) {
    if (index === (arrayLength - 1)) {
         await folder.generateAsync({ type: "blob" }).then(function (content) {
             saveAs(content, "AFILIACIONES.zip");
-            }).then(()=>zip.remove('AFILIACIONES'))
+            }).then(()=>{
+                zip.remove('AFILIACIONES')
+                pdfCreated = null
+            })
     }
     
 }
