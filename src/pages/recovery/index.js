@@ -114,7 +114,7 @@ export default function Index() {
       generatePdf(item, index, array.length)
     })
   
-      array.reverse().forEach((item) => {
+      array.forEach((item) => {
         createDoc(item)
       })
       const duplicados = []
