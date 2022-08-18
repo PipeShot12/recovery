@@ -53,31 +53,6 @@ export default function Index() {
     if (primerNombre && primerApellido && tipoDocu && documento && direccion &&
         ciudad && dpto && celular && direccionOf && ciudad && dptoOf &&
         numeroOf && salario && fechaDeIngreso && queFinca &&nitFinca && razonFinca && emailFinca ) {
-          console.log({
-            id: uuidv4(),
-            primerNombre,
-            segundoNombre,
-            primerApellido,
-            segundoApellido,
-            documento,
-            direccion,
-            dpto,
-            celular,
-            tipoDocu,
-            direccionOf,
-            dptoOf,
-            ciudadOf,
-            numeroOf,
-            nitFinca,
-            razonFinca,
-            cargo,
-            salario,
-            emailFinca,
-            fechaDeIngreso,
-            ciudad,
-            queFinca,
-            
-          })
       setArregloDeArchivos(prev => {
         return [...prev,{
           id: uuidv4(),
