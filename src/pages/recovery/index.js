@@ -565,7 +565,7 @@ export default function Index() {
         <TextField onChangeAction={setPrimerApellido} size={'col-md-3'} label={'primerApellido'} title={'Primer Apellido'} placeholder={'ej. Gomez'}/>
         <TextField onChangeAction={setSegundoApellido} size={'col-md-3'} label={'segundoApellido'} title={'Segundo Apellido'} placeholder={'ej. Sanchez'}/>
         <Select array={arrayTipoDato} size={'col-md-2'} label={'tipoDeDoc'} title={'Tipo Documento'} onChangeAction={selecionadores} newOptionId={'tipoDeDoc1'} defaultV={'CC'} keySub={'tipoDato'}/>
-        <TextField onChangeAction={setDocumento} type={'number'} size={'col-md-3'} label={'documento'} title={'Numero Documento'} placeholder={'e.j 1025978254'}/>
+        <TextField onChangeAction={setDocumento} size={'col-md-3'} label={'documento'} title={'Numero Documento'} placeholder={'e.j 1025978254'}/>
         <TextField onChangeAction={setDireccion} size={'col-md-4'} label={'direccion'} title={'Direccion'} placeholder={'e.j cl 1 # 2 - 3'}/>
         <TextField onChangeAction={setCiudad} size={'col-md-3'} label={'ciudad'} title={'Ciudad'} placeholder={'ej. Ubate'}/>
         <TextField onChangeAction={setDpto} defaultV={'C/MARCA'} size={'col-md-2'} label={'dpto'} title={'Departamento'} placeholder={'ej. Boyaca'}/>
