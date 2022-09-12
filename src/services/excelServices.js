@@ -22,7 +22,7 @@ async function getAllLogsToExcel(array) {
       { key: 'direccion', width: 32 },
       { key: 'ciudad', width: 15 },
       { key: 'telefono', width: 12 },
-      { key: 'correo_empresa', width: 43 },
+      { key: 'correo_empresa', width: 45 },
       { key: 'finca', width: 15 },
       { key: 'fecha_ing', width: 15 }
     ];
@@ -97,7 +97,7 @@ async function getFilterLogsToExcel(array) {
       { key: 'direccion', width: 32 },
       {key: 'ciudad', width:15},
       { key: 'telefono', width: 12 },
-      { key: 'correo_empresa', width: 43 },
+      { key: 'correo_empresa', width: 45 },
       { key: 'finca', width: 15 },
       { key: 'fecha_ing', width: 15 }
     ];
