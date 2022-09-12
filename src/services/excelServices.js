@@ -50,7 +50,7 @@ async function getAllLogsToExcel(array) {
     cell10.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell11.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell12.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
-    array.forEach(element => {
+    array.forEach((element,index) => {
       const fechaRaw = element.fecha_ing
       const formatDate = fechaRaw.substr(0, fechaRaw.indexOf('T')).split("-").reverse().join('/')
       worksheet.addRow({
@@ -67,6 +67,10 @@ async function getAllLogsToExcel(array) {
         finca: element.finca,
         'fecha_ing': formatDate
       });
+      if(element.nit !== 'ALIADOS LABORALES'){
+        const bgYellow = worksheet.getCell(`D${index+2}`)
+        bgYellow.style = {bgColor:'ffff00'}
+      }
     });
     const bla = await workbook.xlsx.writeBuffer()
     saveAs(new Blob([bla]), 'AFILIACIONES PROTECCION.xlsx')
@@ -119,7 +123,7 @@ async function getFilterLogsToExcel(array) {
     cell10.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell11.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
 
-    array.forEach(element => {
+    array.forEach((element,index) => {
       const fechaRaw = element.fecha_ing
       const formatDate = fechaRaw.substr(0, fechaRaw.indexOf('T')).split("-").reverse().join('/')
       worksheet.addRow({
@@ -135,6 +139,10 @@ async function getFilterLogsToExcel(array) {
         finca: element.finca,
         'fecha_ing': formatDate
       });
+      if(element.nit !== 'ALIADOS LABORALES'){
+        const bgYellow = worksheet.getCell(`D${index+2}`)
+        bgYellow.style = {bgColor:'ffff00'}
+      }
     });
     const bla = await workbook.xlsx.writeBuffer()
     saveAs(new Blob([bla]), 'AFILIACIONES PROTECCION.xlsx')
