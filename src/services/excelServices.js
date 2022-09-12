@@ -142,7 +142,7 @@ async function getFilterLogsToExcel(array) {
         'fecha_ing': formatDate
       });
       if(element.empresa !== 'ALIADOS LABORALES'){
-        const bgYellow = worksheet.getCell(`D${index+3}`)
+        const bgYellow = worksheet.getCell(`C${index+3}`)
         bgYellow.style = {fill: {type: 'pattern', pattern: 'solid', fgColor: {argb: 'ffff00'}}}
       }
     });
