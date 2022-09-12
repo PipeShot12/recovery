@@ -11,7 +11,7 @@ async function getAllLogsToExcel(array) {
     // worksheet.getCell(`A1`).alignment = { horizontal: 'center' }
     worksheet.getCell('B1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
     worksheet.mergeCells('B1:H1');
-    worksheet.addRow().values = ['ID', 'CEDULA', 'NOMBRE', 'EMPRESA', 'NIT', 'SALARIO', 'DIRECCION', 'TELEFONO', 'CORREO EMPRESA', 'FINCA', 'FECHA ING']
+    worksheet.addRow().values = ['ID', 'CEDULA', 'NOMBRE', 'EMPRESA', 'NIT', 'SALARIO', 'DIRECCION','CIUDAD','TELEFONO', 'CORREO EMPRESA', 'FINCA', 'FECHA ING']
     worksheet.columns = [
       { key: 'id', width: 8, style: { alignment: { horizontal: 'left' } } },
       { key: 'documento', width: 20, style: { alignment: { horizontal: 'left' } } },
@@ -20,6 +20,7 @@ async function getAllLogsToExcel(array) {
       { key: 'nit', width: 15 },
       { key: 'salario', width: 15, style: { alignment: { horizontal: 'left' } } },
       { key: 'direccion', width: 32 },
+      { key: 'ciudad', width: 15 },
       { key: 'telefono', width: 12 },
       { key: 'correo_empresa', width: 43 },
       { key: 'finca', width: 15 },
@@ -36,6 +37,7 @@ async function getAllLogsToExcel(array) {
     const cell9 = worksheet.getCell('I2')
     const cell10 = worksheet.getCell('J2')
     const cell11 = worksheet.getCell('K2')
+    const cell12 = worksheet.getCell('L2')
     cell1.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell2.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell3.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
@@ -47,6 +49,7 @@ async function getAllLogsToExcel(array) {
     cell9.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell10.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell11.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
+    cell12.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     array.forEach(element => {
       const fechaRaw = element.fecha_ing
       const formatDate = fechaRaw.substr(0, fechaRaw.indexOf('T')).split("-").reverse().join('/')
@@ -58,6 +61,7 @@ async function getAllLogsToExcel(array) {
         nit: element.nit,
         salario: decimales(element.salario),
         direccion: element.direccion,
+        ciudad: element.ciudad,
         telefono: element.telefono,
         'correo_empresa': element.correo_empresa,
         finca: element.finca,
@@ -77,7 +81,7 @@ async function getFilterLogsToExcel(array) {
     // worksheet.getCell(`A1`).alignment = { horizontal: 'center' }
     worksheet.getCell('A1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
     worksheet.mergeCells('A1:H1');
-    worksheet.addRow().values = ['CEDULA', 'NOMBRE', 'EMPRESA', 'NIT', 'SALARIO', 'DIRECCION', 'TELEFONO', 'CORREO EMPRESA', 'FINCA', 'FECHA ING']
+    worksheet.addRow().values = ['CEDULA', 'NOMBRE', 'EMPRESA', 'NIT', 'SALARIO', 'DIRECCION','CIUDAD', 'TELEFONO', 'CORREO EMPRESA', 'FINCA', 'FECHA ING']
     worksheet.columns = [
       { key: 'documento', width: 20,style:{ alignment: { horizontal: 'left' } }  },
       { key: 'nombre', width: 32 },
@@ -85,6 +89,7 @@ async function getFilterLogsToExcel(array) {
       { key: 'nit', width: 15 },
       { key: 'salario', width: 15,style:{ alignment: { horizontal: 'left' } } },
       { key: 'direccion', width: 32 },
+      {key: 'ciudad', width:15},
       { key: 'telefono', width: 12 },
       { key: 'correo_empresa', width: 43 },
       { key: 'finca', width: 15 },
@@ -100,6 +105,7 @@ async function getFilterLogsToExcel(array) {
     const cell8 = worksheet.getCell('H2')
     const cell9 = worksheet.getCell('I2')
     const cell10 = worksheet.getCell('J2')
+    const cell11 = worksheet.getCell('K2')
 
     cell1.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell2.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
@@ -111,6 +117,7 @@ async function getFilterLogsToExcel(array) {
     cell8.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell9.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
     cell10.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
+    cell11.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
 
     array.forEach(element => {
       const fechaRaw = element.fecha_ing
@@ -122,6 +129,7 @@ async function getFilterLogsToExcel(array) {
         nit: element.nit,
         salario: decimales(element.salario),
         direccion: element.direccion,
+        ciudad: element.ciudad,
         telefono: element.telefono,
         'correo_empresa': element.correo_empresa,
         finca: element.finca,
