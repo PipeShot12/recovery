@@ -59,7 +59,7 @@ export default function Index() {
     const REXP= /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
     const {id,date, range} = props
     setFiltrar(false)
-    if ((token && id) || (token && date && REXP.test(date) )  || ((token && range) && (range?.hasta > range?.desde))) {
+    if ((token && id) || (token && date && REXP.test(date) )  || ((token && range) && (Number(range?.hasta) > Number(range?.desde)))) {
       setDisabledButtonGetFilter(true)
       setLoadingGetFilter(true)
       const req = await filterData(props,token)
