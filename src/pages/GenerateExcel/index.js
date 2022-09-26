@@ -55,7 +55,8 @@ export default function Index() {
     }
   }
 
-  const filterSearch = async (props,token) => {
+  const filterSearch = async (props,token,e) => {
+    e.preventDefault()
     const REXP= /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
     const {id,date, range} = props
     setFiltrar(false)
@@ -130,7 +131,7 @@ export default function Index() {
             <input  onChange={(e) => handlerInputs(e)} value={porFecha} type="date" className="form-control" id="filtrarPorFecha" />
           </div>
           <div className='d-flex justify-content-center d-md-12'>
-          <button disabled={disabledButtonGetFilter} onClick={(e) => filterSearch({id:porId,date:porFecha,range:rango},token) } className="btn btn-primary mb-2 ">
+          <button disabled={disabledButtonGetFilter} onClick={(e) => filterSearch({id:porId,date:porFecha,range:rango},token,e) } className="btn btn-primary mb-2 ">
             {<Spinner loading={loadingGetFilter} title={'Aceptar'} />}
           </button>
           </div>
