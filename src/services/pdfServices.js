@@ -1,7 +1,7 @@
 import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
 import fontkit from '@pdf-lib/fontkit'
 import { saveAs } from 'file-saver';
-import myForm from '../assets/firmaCliente.pdf'
+import myForm from '../assets/firmaCliente2.pdf'
 import myCheck from '../assets/check.png'
 import myFont from '../assets/font1.ttf'
 import JSZip from 'jszip';
@@ -89,13 +89,13 @@ async function generatePdf(obj, index, arrayLength) {
     const firstPage = pages[0]
 
     const {width, height} = firstPage.getSize()   
-    firstPage.drawImage(pngImage,{x: width - 456, y: height - 70,height:12, width: 12})
-    firstPage.drawImage(pngImage,{x: width - 471, y: height - 107,height:12, width: 12})
-    firstPage.drawImage(pngImage,{x: width - 270,y: height - 683,height:11, width: 11})
+    firstPage.drawImage(pngImage,{x: width - 463, y: height - 57,height:12, width: 12})
+    firstPage.drawImage(pngImage,{x: width - 479, y: height - 97,height:12, width: 12})
+    firstPage.drawImage(pngImage,{x: width - 269,y: height - 710,height:11, width: 11})
     firstPage.drawText(`${primerNombre} ${segundoNombre} ${primerApellido} ${segundoApellido}`,
     {
-        x: width - 511,
-        y: height - 172,
+        x: width - 524,
+        y: height - 167,
         size: 14,
         font: ArialMtBold,
         color: rgb(0,0,0),
@@ -104,8 +104,8 @@ async function generatePdf(obj, index, arrayLength) {
 
     firstPage.drawText(`${tipoDocu === 'CC' && documento > 0 ? decimales(documento): documento }`,
     {
-        x: width - 237,
-        y: height - 148,
+        x: width - 233,
+        y: height - 142,
         size: 15,
         font: ArialMtBold,
         color: rgb(0,0,0),
@@ -113,81 +113,83 @@ async function generatePdf(obj, index, arrayLength) {
 
     firstPage.drawText(`${direccion}`,
     {
-        x: width - 518,
-        y: height - 595,
+        x: width - 532,
+        y: height - 618,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${dpto}`,
     {
-        x: width - 205,
-        y: height - 595,
+        x: width - 203,
+        y: height - 618,
         size: 12,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${ciudad}`,
     {
-        x: width - 518,
-        y: height - 617,
+        x: width - 532,
+        y: height - 641,
         size: 12,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${celular}`,
     {
-        x: width - 417,
-        y: height - 617,
+        x: width - 425,
+        y: height - 641,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
-    const email = arrayEmail.filter(item=> item !== emailFinca ? '' : emailFinca)[0]
-    firstPage.drawText(`${email !== undefined ? email : ''}`,
+    const email = arrayEmail.indexOf(emailFinca) < 0 ? undefined : emailFinca
+  
+
+    firstPage.drawText(`${email === undefined ? emailFinca : ''}`,
     {
-        x: width - 310,
-        y: height - 617,
+        x: width - 311,
+        y: height - 640,
         size: 8.2,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${direccionOf}`,
     {
-        x: width - 518,
-        y: height - 638,
+        x: width - 532,
+        y: height - 664,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${ciudadOf}`,
     {
-        x: width - 347,
-        y: height - 638,
+        x: width - 350,
+        y: height - 664,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${dptoOf}`,
     {
-        x: width - 263,
-        y: height - 638,
+        x: width - 261,
+        y: height - 664,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${numeroOf}`,
     {
-        x: width - 175,
-        y: height - 638,
+        x: width - 169,
+        y: height - 664,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${cargo}`,
     {
-        x: width - 518,
-        y: height - 683,
+        x: width - 532,
+        y: height - 712,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
@@ -195,47 +197,47 @@ async function generatePdf(obj, index, arrayLength) {
     firstPage.drawText(`${salario > 0 ? decimales(salario): ''}`,
     {
         x: width - 258,
-        y: height - 683,
+        y: height - 712,
         size: 13,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${separarFecha[2].slice(2)}`,
     {
-        x: width - 168,
-        y: height - 679,
+        x: width - 162,
+        y: height - 705,
         size: 10,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${separarFecha[1]}`,
     {
-        x: width - 142,
-        y: height - 679,
+        x: width - 134,
+        y: height - 705,
         size: 10,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${separarFecha[0]}`,
     {
-        x: width - 118,
-        y: height - 679,
+        x: width - 107,
+        y: height - 705,
         size: 10,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${nitFinca}`,
     {
-        x: width - 518,
-        y: height - 707,
+        x: width - 532,
+        y: height - 736,
         size: 14,
         font: ArialMtBold,
         color: rgb(0,0,0),
     })
     firstPage.drawText(`${razonFinca}`,
     {
-        x: width - 350,
-        y: height - 707,
+        x: width - 354,
+        y: height - 736,
         size: 14,
         font: ArialMtBold,
         color: rgb(0,0,0),
@@ -245,28 +247,28 @@ async function generatePdf(obj, index, arrayLength) {
     
     switch (tipoDocu) {
         case 'CC':
-            firstPage.drawImage(pngImage,{x: width - 513, y: height - 143,height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 523, y: height - 134,height:13, width: 13})
             break;
         case 'CE':
-            firstPage.drawImage(pngImage,{x: width - 488, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 496, y: height - 134, height:13, width: 13})
             break;
         case 'RCN':
-            firstPage.drawImage(pngImage,{x: width - 462, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 469, y: height - 134, height:13, width: 13})
             break;
         case 'TI':
-            firstPage.drawImage(pngImage,{x: width - 434, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 439, y: height - 134, height:13, width: 13})
             break;
         case 'PASAPORTE':
-            firstPage.drawImage(pngImage,{x: width - 410, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 413, y: height - 134, height:13, width: 13})
             break;
         case 'PASAPORTE DP':
-            firstPage.drawImage(pngImage,{x: width - 366, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 368, y: height - 134, height:13, width: 13})
             break;
         case 'PEP':
-            firstPage.drawImage(pngImage,{x: width - 290, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 288, y: height - 134, height:13, width: 13})
             break;
         case 'PT':
-            firstPage.drawImage(pngImage,{x: width - 266, y: height - 143, height:13, width: 13})
+            firstPage.drawImage(pngImage,{x: width - 261, y: height - 134, height:13, width: 13})
             break;
     
         default:

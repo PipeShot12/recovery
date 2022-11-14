@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import './recovery.css'
-import { arrayTipoDato,arrayCiudadOf,arrayDirOf,arrayTelOf, arrayEmail, arrayNit, arrayRazon } from '../../assets/arrayData'
+import { arrayTipoDato,arrayCiudadOf,arrayDirOf,arrayTelOf, arrayObjEmail, arrayNit, arrayRazon } from '../../assets/arrayData'
 import Modal from '../../components/Modal'
 import TextField from '../../components/TextField'
 import Select from '../../components/Select'
@@ -581,7 +581,7 @@ export default function Index() {
           <input onChange={(e) => setFechaDeIngreso(reverseDate((e.target.value).replace(/-/g, '/')))} type="date" className="form-control" id="fechaDeIngreso" />
         </div>
         <TextField onChangeAction={setQueFinca} size={'col-md-2'} label={'queFinca'} title={'Finca'} placeholder={'e.j BQT2'}/>
-        <Select array={arrayEmail} size={'col-md-3'} label={'emailFinca'} title={'Email Finca'} onChangeAction={selecionadores} newOptionId={'emailFinca1'} keySub={'emailFinca'}/>
+        <Select array={arrayObjEmail} size={'col-md-3'} label={'emailFinca'} title={'Email Finca'} onChangeAction={selecionadores} newOptionId={'emailFinca1'} keySub={'emailFinca'}/>
         <Select array={arrayNit} size={'col-md-2'} label={'nitFinca'} title={'Nit'} onChangeAction={selecionadores} defaultV={'900426164'} newOptionId={'nitFinca1'} keySub={'nitFinca'}/>
         <Select array={arrayRazon} size={'col-md-3'} label={'razonFinca'} title={'Razon Social'} onChangeAction={selecionadores} defaultV={'900426164'} newOptionId={'razonFinca1'} keySub={'razonFinca'}/>
         {objEditar ? (
