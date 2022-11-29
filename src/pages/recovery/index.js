@@ -145,7 +145,7 @@ export default function Index() {
       if(duplicadosContipoDifrente.length > 0){
         let mostrarDupConTipoDiferente = ''
         for( let item of duplicadosContipoDifrente){
-            mostrarDupConTipoDiferente += `<p></p><p>${item.tipoDocu} | ${item.documento} | ${item.primerNombre} ${item.primerApellido}</p>`
+            mostrarDupConTipoDiferente += `<p></p><p>${item.tipoDocu} || ${item.documento} || ${item.primerNombre} ${item.primerApellido}</p>`
         }
         setModalInformativo(true)
         setMostrarAdvertencia(true)
