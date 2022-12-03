@@ -4,7 +4,7 @@ function reverseDate(str) {
 function decimales(numero){
     const strToNumber = Number(numero)
     const numeroConPuntos = strToNumber.toLocaleString()
-
-    return numeroConPuntos
+    const toString = numeroConPuntos.toString()
+    return toString.replace(/\,/g,'.');
 }
 export { reverseDate,decimales  }

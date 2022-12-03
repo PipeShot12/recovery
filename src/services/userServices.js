@@ -1,4 +1,5 @@
 const loginUrl = process.env.REACT_APP_URL_LOGIN
+console.log(loginUrl)
 const registerUrl = process.env.REACT_APP_URL_REGISTER
 const loginService = async (userData) => {
   const req = await window.fetch(loginUrl, {
