@@ -3,8 +3,8 @@ function reverseDate(str) {
 }
 function decimales(numero){
     const strToNumber = Number(numero)
-    const numeroConPuntos = strToNumber.toLocaleString()
-    const toString = numeroConPuntos.toString()
-    return toString.replace(/\,/g,'.');
+    return strToNumber.toLocaleString()
+    // const toString = numeroConPuntos.toString()
+    // return toString.replace(/\,/g,'.');
 }
 export { reverseDate,decimales  }
