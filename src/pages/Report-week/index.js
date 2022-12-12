@@ -38,7 +38,7 @@ export default function Index() {
       e.preventDefault()
       const REXP= /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
       const {range} = props
-      console.log(range)
+      
       setFiltrar(false)
       if ((token && range) && (range?.hasta > range?.desde) && (REXP.test(range?.hasta) && (REXP.test(range?.desde)))) {
         setDisabledButtonGetFilter(true)
@@ -50,7 +50,7 @@ export default function Index() {
           reportExcel(res,range)
           setDisabledButtonGetFilter(false)
           setLoadingGetFilter(false)
-          console.log(res)
+        
         } else {
           const error = await req.json()
           setModalInfo(true)
