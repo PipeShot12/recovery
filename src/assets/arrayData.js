@@ -32,7 +32,8 @@ const arrayObjEmail = [{item:'contratacion_lapradera@sunshinebouquet.com'},
 {item:'xsuarez@sunshinebouquet.com'},
 {item:'contratacion_pradera2@sunshinebouquet.com'},
 {item:'contratacion_bqt2@sunshinebouquet.com'},
-{item:'ccontratacion_puebloviejo@sunshinebouquet.com'},
+{item:'contratacion_puebloviejo@sunshinebouquet.com'},
 {item:'contratacion_santarosa@sunshinebouquet.com'},
+{item:'contratacion_santafe1@sunshinebouquet.com'},
 {item:'OTRO'}]
 export {arrayTipoDato,arrayCiudadOf,arrayDirOf,arrayTelOf,arrayEmail,arrayNit,arrayRazon,arrayObjEmail}
