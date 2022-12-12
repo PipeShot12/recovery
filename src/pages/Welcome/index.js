@@ -16,7 +16,7 @@ export default function Index() {
           <button className='btn btn-success h1'>Descargar un reporte de afiliaciones!</button>
         </Link>
         <Link to='/generate-week-report'>
-          <button className='btn btn-warning h1'>Cantidad afiliciones semanales!</button>
+          <button className='btn btn-warning h1'>Reporte semanal de afiliaciones!</button>
         </Link>
         <Logout/>
     </div>

@@ -155,7 +155,7 @@ async function reportExcel(array,date) {
   if (array?.length > 0) {
     const workbook = new Excel.Workbook();
     const worksheet = workbook.addWorksheet("Hoja 1");
-    const title = `REPORTE SEMANA DEL ${date?.desde} hasta ${date?.hasta}`
+    const title = `REPORTE SEMANAL DEL ${date?.desde} HASTA ${date?.hasta}`
     worksheet.getCell('A1').value = title;
     // worksheet.getCell(`A1`).alignment = { horizontal: 'center' }
     worksheet.getCell('A1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
