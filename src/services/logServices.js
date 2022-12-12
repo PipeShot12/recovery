@@ -1,6 +1,6 @@
 const logs = process.env.REACT_APP_URL_LOGS
 const logsFilter = process.env.REACT_APP_URL_LOGSFILTER
-const reportLogs = process.env.REACT_APP_URL_REPORT
+const reportApi = process.env.REACT_APP_URL_REPORT
 
   
 const getAllLogs = async (token) => {
@@ -35,7 +35,7 @@ const filterData = async (props, token) => {
     return req
   }
 const reportLog = async (props, token) => {
-  const req = await window.fetch(reportLogs, {
+  const req = await window.fetch(reportApi, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
