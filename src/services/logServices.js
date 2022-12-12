@@ -32,4 +32,15 @@ const filterData = async (props, token) => {
     })
     return req
   }
-export { getAllLogs, createLog, filterData }
+const reportLog = async (props, token) => {
+  const req = await window.fetch(logsFilter, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify(props)
+  })
+  return req
+}
+export { getAllLogs, createLog, filterData, reportLog }

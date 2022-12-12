@@ -150,4 +150,40 @@ async function getFilterLogsToExcel(array) {
     saveAs(new Blob([bla]), 'AFILIACIONES PROTECCION.xlsx')
   }
 };
-export { getAllLogsToExcel, getFilterLogsToExcel }
+async function reportExcel(array,date) {
+
+  if (array?.length > 0) {
+    const workbook = new Excel.Workbook();
+    const worksheet = workbook.addWorksheet("Hoja 1");
+    const title = `REPORTE SEMANA DEL ${date?.desde} hasta ${date?.hasta}`
+    worksheet.getCell('A1').value = title;
+    // worksheet.getCell(`A1`).alignment = { horizontal: 'center' }
+    worksheet.getCell('A1').style = { font: { size: 30, color: { argb: '0070C0' }, bold: true }, alignment: { horizontal: "center" } }
+    worksheet.mergeCells('A1:L1');
+    worksheet.addRow().values = ['FINCA', 'CANTIDAD']
+    worksheet.columns = [
+      { key: 'finca', width: 20,style:{ alignment: { horizontal: 'left' } }  },
+      { key: 'cantidad', width: 32 },
+    ];
+    const cell1 = worksheet.getCell('A2')
+    const cell2 = worksheet.getCell('B2')
+  
+
+    cell1.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
+    cell2.style = { font: { bold: true, color: { 'argb': 'b81f1f' } } }
+  
+
+    array.forEach((element,index) => {
+      worksheet.addRow({
+        finca: element.finca,
+        cantidad: element.cantidad
+      });
+    });
+    worksheet.addRow({finca : 'TOTAL',cantidad:array.reduce((acc,crr)=>{
+      return acc + Number(crr.cantidad)
+    },0)})
+    const bla = await workbook.xlsx.writeBuffer()
+    saveAs(new Blob([bla]), 'REPORTE SEMANA.xlsx')
+  }
+};
+export { getAllLogsToExcel, getFilterLogsToExcel,reportExcel }
