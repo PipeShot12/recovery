@@ -15,7 +15,7 @@ const arrayEmail = ['contratacion_lapradera@sunshinebouquet.com',
                     'xsuarez@sunshinebouquet.com',
                     'contratacion_pradera2@sunshinebouquet.com',
                     'contratacion_bqt2@sunshinebouquet.com',
-                    'ccontratacion_puebloviejo@sunshinebouquet.com',
+                    'contratacion_puebloviejo@sunshinebouquet.com',
                     'contratacion_santarosa@sunshinebouquet.com',
                     'OTRO']
 const arrayNit = [{item:'900426164'},{item:'830010738'},{item:'OTRO'}]
