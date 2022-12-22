@@ -17,6 +17,7 @@ const arrayEmail = ['contratacion_lapradera@sunshinebouquet.com',
                     'contratacion_bqt2@sunshinebouquet.com',
                     'contratacion_puebloviejo@sunshinebouquet.com',
                     'contratacion_santarosa@sunshinebouquet.com',
+                    'contratacion_santafe1@sunshinebouquet.com',
                     'OTRO']
 const arrayNit = [{item:'900426164'},{item:'830010738'},{item:'OTRO'}]
 const arrayRazon = [{item:'ALIADOS LABORALES'},{item:'CI SUNSHINE BOUQUET SAS'},{item:"OTRO"}]
