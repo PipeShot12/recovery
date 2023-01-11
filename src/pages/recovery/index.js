@@ -10,7 +10,7 @@ import { reverseDate } from '../../helpers/helpers'
 import { generatePdf, createDoc } from '../../services/pdfServices'
 import {createLog} from '../../services/logServices'
 import { useUser } from '../../context/userContext'
-import ButtonBack from '../../components/GobackButton'
+
 export default function Index() {
   const {saveTemporalToken,localStorageToken} = useUser()
   const {token} =  saveTemporalToken || localStorageToken
@@ -585,7 +585,6 @@ export default function Index() {
 
   return (
     <div className='new-file'>
-      <ButtonBack/>
       <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
       <Modal ingresarValor={otroValor}  eleminarValor={eleminarAfiliacion} cerrarModal={handlerCerrarModal} advertencia={mostrarAdvertencia} handlerAdvertencia={handlerAdvertencia} editarRegistro={editarRegistroEspecifico} modalEdit={modalEdit} array={arregloDeArchivos} setModalInfo={setModalInformativo} modalIformativo={modalIformarmativo} titleModal={titleModal} bodyModal={bodyModal} nuevoValor={cambiarValorSelecionadores} />
       <form className="row g-3 form-file">
