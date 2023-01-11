@@ -1,7 +1,8 @@
+import React from 'react'
 import { useState, useRef } from 'react'
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4, } from 'uuid';
 import './recovery.css'
-import { arrayTipoDato,arrayCiudadOf,arrayDirOf,arrayTelOf, arrayObjEmail, arrayNit, arrayRazon } from '../../assets/arrayData'
+import { arrayTipoDato,arrayCiudadOf,arrayDirOf,arrayTelOf, arrayObjEmail, arrayNit, arrayRazon ,arrayEmail} from '../../assets/arrayData'
 import Modal from '../../components/Modal'
 import TextField from '../../components/TextField'
 import Select from '../../components/Select'
@@ -9,6 +10,7 @@ import { reverseDate } from '../../helpers/helpers'
 import { generatePdf, createDoc } from '../../services/pdfServices'
 import {createLog} from '../../services/logServices'
 import { useUser } from '../../context/userContext'
+import ButtonBack from '../../components/GobackButton'
 export default function Index() {
   const {saveTemporalToken,localStorageToken} = useUser()
   const {token} =  saveTemporalToken || localStorageToken
@@ -39,7 +41,8 @@ export default function Index() {
   const [emailFinca, setEmailFinca] = useState('');
   const [fechaDeIngreso, setFechaDeIngreso] = useState('')
   const [queFinca, setQueFinca] = useState('')
-
+  
+  const [indexToAdd, setIndexToAdd] = useState(undefined)
   const [titleModal, setTitleModal] = useState('')
   const [bodyModal, setBodyModal] = useState('')
   const [modalIformarmativo, setModalInformativo] = useState(false)
@@ -52,7 +55,7 @@ export default function Index() {
     e.preventDefault()
     if (primerNombre && primerApellido && tipoDocu && documento && direccion &&
         ciudad && dpto && celular && direccionOf && ciudad && dptoOf &&
-        numeroOf && salario && fechaDeIngreso && queFinca &&nitFinca && razonFinca && emailFinca ) {
+        numeroOf && salario && fechaDeIngreso && queFinca &&nitFinca && razonFinca && emailFinca.trim() ) {
       setArregloDeArchivos(prev => {
         return [...prev,{
           id: uuidv4(),
@@ -92,6 +95,31 @@ export default function Index() {
       setDocumento('')
       setDireccion('')
       setCelular('')
+      const newEmail = arrayEmail.indexOf(emailFinca)
+      if(newEmail < 0){
+        setEmailFinca('')
+        document.getElementById('emailFinca1').innerHTML = 'Selecionar...'
+      }
+      const newNit = arrayNit.map(item=> item.item).indexOf(nitFinca)
+      if(newNit < 0){
+        document.getElementById('nitFinca1').innerHTML = 'Selecionar...'
+      }
+      const newRazon = arrayRazon.map(item=> item.item).indexOf(razonFinca)
+      if(newRazon < 0){
+        document.getElementById('razonFinca1').innerHTML = 'Selecionar...'
+      }
+      const newDirOf = arrayDirOf.map(item => item.item).indexOf(direccionOf)
+      if(newDirOf < 0){
+        document.getElementById('direccionOf1').innerHTML = 'Selecionar...'
+      }
+      const newCiudadOf = arrayCiudadOf.map(item => item.item).indexOf(ciudadOf)
+      if(newCiudadOf < 0 ){
+        document.getElementById('ciudadOf1').innerHTML = 'Selecionar...'
+      }
+      const newNumeroOf = arrayTelOf.map(item => item.item).indexOf(numeroOf)
+      if(newNumeroOf < 0){
+        document.getElementById('numeroOf1').innerHTML = 'Selecionar...'
+      }
       document.getElementById('primerNombre').value = ''
       document.getElementById('segundoNombre').value = ''
       document.getElementById('primerApellido').value = ''
@@ -196,8 +224,8 @@ export default function Index() {
   }
   const guardarEdiccion = (e) =>{
     e.preventDefault()
-    setArregloDeArchivos([...todosLosRegistroExceptoEditado,{
-      id: documento,
+    const objetoListo = {
+      id: indexToAdd.id,
       primerNombre,
       segundoNombre,
       primerApellido,
@@ -219,7 +247,12 @@ export default function Index() {
       fechaDeIngreso,
       ciudad,
       queFinca,
-    }])
+    }
+    todosLosRegistroExceptoEditado.splice(indexToAdd,0,)
+    const arregloConEdiccion = [...todosLosRegistroExceptoEditado]
+    arregloConEdiccion.splice(indexToAdd.index,0,objetoListo);
+
+    setArregloDeArchivos([...arregloConEdiccion])
     setObjEditar(false)
     setModalEdit(false)
     setDocumento('')
@@ -257,6 +290,8 @@ export default function Index() {
   const editarRegistroEspecifico = (e,id) =>{
     e.preventDefault()
     document.getElementById('closeModal').click()
+    const index = arregloDeArchivos.findIndex(item => item.id === id)
+    setIndexToAdd({index,id})
     const objEspecifico = arregloDeArchivos.find(item=> item.id === id)
     const arrayNoEditado = arregloDeArchivos.filter(item => item.id !== id);
     setTodosLosRegistroExceptoEditado(arrayNoEditado)
@@ -547,9 +582,10 @@ export default function Index() {
       setOtroValor(false)
  
   }
- 
+
   return (
     <div className='new-file'>
+      <ButtonBack/>
       <button ref={botonModal} type="button" className="btn btn-primary boton-modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
       <Modal ingresarValor={otroValor}  eleminarValor={eleminarAfiliacion} cerrarModal={handlerCerrarModal} advertencia={mostrarAdvertencia} handlerAdvertencia={handlerAdvertencia} editarRegistro={editarRegistroEspecifico} modalEdit={modalEdit} array={arregloDeArchivos} setModalInfo={setModalInformativo} modalIformativo={modalIformarmativo} titleModal={titleModal} bodyModal={bodyModal} nuevoValor={cambiarValorSelecionadores} />
       <form className="row g-3 form-file">
@@ -571,7 +607,7 @@ export default function Index() {
         <TextField onChangeAction={setDpto} defaultV={'C/MARCA'} size={'col-md-2'} label={'dpto'} title={'Departamento'} placeholder={'ej. Boyaca'}/>
         <TextField onChangeAction={setCelular} size={'col-md-3'} value={celular} label={'celular'} title={'Celular'} placeholder={'ej. 3223078950'}/>
         <Select array={arrayDirOf} size={'col-md-4'} label={'direccionOf'} title={'Direccion Oficina'} onChangeAction={selecionadores} newOptionId={'direccionOf1'} defaultV={'KRA 21 # 87 - 22'} keySub={'dirOf'}/>
-        <Select array={arrayCiudadOf} size={'col-md-3'} label={'ciudadOf'} title={'Direccion Oficina'} onChangeAction={selecionadores} newOptionId={'ciudadOf1'} defaultV={'BOGOTA'} keySub={'ciOf'}/>
+        <Select array={arrayCiudadOf} size={'col-md-3'} label={'ciudadOf'} title={'Ciudad Oficina'} onChangeAction={selecionadores} newOptionId={'ciudadOf1'} defaultV={'BOGOTA'} keySub={'ciOf'}/>
         <TextField onChangeAction={setDptoOf} defaultV={'C/MARCA'} size={'col-md-3'} label={'dptoOf'} title={'Departamento Oficina'} placeholder={'ej. Nte Santander'}/>
         <Select array={arrayTelOf} size={'col-md-3'} label={'numeroOf'} title={'Numero Oficina'} onChangeAction={selecionadores} newOptionId={'numeroOf1'} defaultV={'7498332'} keySub={'ciOf'}/>
         <TextField onChangeAction={setCargo} defaultV={'A Y P'} size={'col-md-3'} label={'cargoEmpleado'} title={'Cargo Empleado'} placeholder={'e.j Aux Op'}/>
